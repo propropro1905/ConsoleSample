@@ -22,9 +22,9 @@ pipeline {
     stage('push nuget package nexus repo'){
       steps{
         sh 'dotnet pack'
-        sh 'nuget sources add -Source  {NEXUS_URL}/repository/{NEXUS_REPOSITORY}/ -Name test_dotnet -Username admin -Password abc251199'
-        sh 'nuget setapikey {NEXUS_API_KEY} -source {NEXUS_URL}/repository/{NEXUS_REPOSITORY}/'
-        sh 'dotnet nuget push ./App/bin/Debug/*.nupkg --source {NEXUS_URL}/repository/{NEXUS_REPOSITORY} --api-key {NEXUS_API_KEY}'
+        sh 'nuget sources add -Source  ${NEXUS_URL}/repository/${NEXUS_REPOSITORY}/ -Name test_dotnet -Username admin -Password abc251199'
+        sh 'nuget setapikey ${NEXUS_API_KEY} -source ${NEXUS_URL}/repository/${NEXUS_REPOSITORY}/'
+        sh 'dotnet nuget push ./App/bin/Debug/*.nupkg --source ${NEXUS_URL}/repository/${NEXUS_REPOSITORY} --api-key ${NEXUS_API_KEY}'
       }
     }
   }
