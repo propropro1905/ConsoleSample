@@ -24,7 +24,7 @@ pipeline {
         sh 'dotnet pack -p:Version=$BUILD_ID'
         sh 'nuget sources add -Source  ${NEXUS_URL}/repository/${NEXUS_REPOSITORY}/ -Name test_dotnet -Username admin -Password abc251199'
         sh 'nuget setapikey ${NEXUS_API_KEY} -source ${NEXUS_URL}/repository/${NEXUS_REPOSITORY}/'
-        sh 'dotnet nuget push ./App/bin/Debug/*.nupkg --source ${NEXUS_URL}/repository/${NEXUS_REPOSITORY} --api-key ${NEXUS_API_KEY}'
+        sh 'dotnet nuget push ./App/bin/Debug/*.nupkg --source ${NEXUS_URL}/repository/${NEXUS_REPOSITORY} --skip-duplicate --api-key ${NEXUS_API_KEY}'
         sh 'rm -rf ./App/bin/Debug/*.nupkg'
       }
     }
