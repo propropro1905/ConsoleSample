@@ -14,7 +14,6 @@ pipeline {
   stages {
     stage('build and scan sonar'){
       steps {
-        sh 'nuget restore; exit 0'
         sh 'dotnet-sonarscanner begin -k:"test_dotnet" -d:sonar.host.url=http://192.168.75.132:9000 -d:sonar.login=5bf81fa069a71f925b33640719d88f83488b0df8 '
         sh 'dotnet build'
         sh 'dotnet-sonarscanner end -d:sonar.login=5bf81fa069a71f925b33640719d88f83488b0df8'
