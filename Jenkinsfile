@@ -1,7 +1,7 @@
 pipeline {
   agent {
     docker {
-      image 'pendragon1902/dotnet-builder:test'
+      image 'pendragon1902/dotnet-builder'
     }
   }
   environment {
